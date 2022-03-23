@@ -1,0 +1,55 @@
+<div class="container">
+<h1 style="padding-top: 15px;">Agenda - Solicitar Horários</h1><br>
+
+<form class="row g-3" action="/solicitar_agenda?professional_id=<?= $this->view->prof['id'] ?>&specialty_id=<?= $this->view->prof['specialty_id'] ?>" method="POST">
+    <div class="container">
+        <div class="row">
+            <div class="col-4">
+                <div class="card" style="width: 18rem;">
+                    <div class="col-4">
+                        <div class="card" style="width: 18rem;">
+                        <?php if($this->view->prof['pic'] != '') {  ?>
+                                <img src="img/<?= $this->view->prof['pic'] ?>" class="card-img-top " alt="...">
+                            <?php }else{ ?>
+                                <img src="img/default.png" style="width: 80%;" class="card-img-top " alt="...">
+                            <?php } ?>
+                            <div class="card-body">
+                                <h5 class="card-title"><?= $this->view->prof['name'] ?></h5>
+                                <p class="card-text"><?= $this->view->prof['descricao'] ?></p>
+                                <a href="/" class="btn btn-primary">Troca Profissional</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-6">
+            <h4>Preencha seus dados</h4><br>
+                <div class="row">
+                    <div class="col-6">
+                        <input type="text" name="name" class="form-control form-select-lg" id="name" placeholder="Nome Completo">
+                    </div>
+                    <div class="col-6">
+                        <select type="select" name='como' class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+                            <option selected>Como Conheceu?</option>
+                            <option >Facebook</option>
+                            <option >Instagram</option>
+                            <option >LinkedIn</option>
+                            <option >Amigo</option>
+                            <option >Google</option>
+                        </select>
+                    </div>
+                    <div class="col-6">
+                        <input type="text" name="birthdate" class="form-control form-select-lg" id="birthdate" placeholder="Nascimento">
+                    </div>
+                    <div class="col-6">
+                        <input type="text" name="cpf" class="form-control form-select-lg" id="cpf" placeholder="CPF">
+                    </div>
+                    <div class="col-6" style="padding-top: 15px;">
+                        <button type="submit" class="btn btn-primary">Solicitar Horários</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

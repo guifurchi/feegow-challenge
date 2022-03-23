@@ -1,0 +1,18 @@
+<div class="container" style="padding-top: 15px;">
+    <div class="row">
+        <div class="col-12">
+        <?php if($this->view->erro == 'erro') { ?>
+            <h1>Solicitação Negada!</h1>
+            <p>Por favor verifique se os campos foram preenchidos corretamente.</p>
+            <a href="/agenda?professional_id=<?= $_GET['professional_id'] ?>">voltar para o agendamento</a>
+        <?php }else{ ?>
+            <h1>Solicitação realizada com sucesso</h1>
+            <p>Retornaremos com a confirmação em breve!</p>
+            <p>Obrigado por utilizar o nosso agendamento Feegow!</p>
+            <a href="/">Agendar nova consulta</a>
+        <?php } ?>
+        </div>
+    </div>
+</div>
+
+
