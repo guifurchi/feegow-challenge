@@ -1,42 +1,42 @@
+<head>
+    <script src="src/script.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <title>Feegow - Agendar</title>
+</head>
+<!-- Métodos carregados do arquivo script.js -->
+<body onload="agendar(), getSources()">
 <div class="container">
 <h1 style="padding-top: 15px;">Agenda - Solicitar Horários</h1><br>
 
-<form class="row g-3" action="/solicitar_agenda?professional_id=<?= $this->view->prof['id'] ?>&specialty_id=<?= $this->view->prof['specialty_id'] ?>" method="POST">
-    <div class="container">
+<!-- informações vindas da requisição AJAX de profissionais 
+    1. se utilizado para inserção via AJAX deve colocar action="/confirma".
+    2. se utilisado para inserção direta no MySQL via PHP deve colocar action="/solicitar_agenda".
+-->
+<div class="container">
+    <form class="row g-3" id="form" action="/confirma" method="POST">
         <div class="row">
             <div class="col-4">
-                <div class="card" style="width: 18rem;">
-                    <div class="col-4">
-                        <div class="card" style="width: 18rem;">
-                        <?php if($this->view->prof['pic'] != '') {  ?>
-                                <img src="img/<?= $this->view->prof['pic'] ?>" class="card-img-top " alt="...">
-                            <?php }else{ ?>
-                                <img src="img/default.png" style="width: 80%;" class="card-img-top " alt="...">
-                            <?php } ?>
-                            <div class="card-body">
-                                <h5 class="card-title"><?= $this->view->prof['name'] ?></h5>
-                                <p class="card-text"><?= $this->view->prof['descricao'] ?></p>
-                                <a href="/" class="btn btn-primary">Troca Profissional</a>
-                            </div>
-                        </div>
+                <div class="card">
+                        <img src="img/default.png" id="prof_pic" class="card-img-top " alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title" id="name_prof" ></h5>
+                        <p class="card-text" id="specialty_name" ></p>
+                        <a href="/" class="btn btn-primary">Troca Profissional</a>
                     </div>
                 </div>
             </div>
-            
+
             <div class="col-6">
-            <h4>Preencha seus dados</h4><br>
-                <div class="row">
+            <h3>Preencha seus dados</h4><br>
+                <div class="row" id="dados">
                     <div class="col-6">
                         <input type="text" name="name" class="form-control form-select-lg" id="name" placeholder="Nome Completo">
                     </div>
                     <div class="col-6">
-                        <select type="select" name='como' class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
-                            <option selected>Como Conheceu?</option>
-                            <option >Facebook</option>
-                            <option >Instagram</option>
-                            <option >LinkedIn</option>
-                            <option >Amigo</option>
-                            <option >Google</option>
+
+                        <!-- informações vindas da requisição AJAX de source_id -->
+                        <select type="select" name='source_id' id="source_id" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+                            <option value='0' selected>Como Conheceu?</option>
                         </select>
                     </div>
                     <div class="col-6">
@@ -46,10 +46,14 @@
                         <input type="text" name="cpf" class="form-control form-select-lg" id="cpf" placeholder="CPF">
                     </div>
                     <div class="col-6" style="padding-top: 15px;">
-                        <button type="submit" class="btn btn-primary">Solicitar Horários</button>
+                        <button class="btn btn-primary" onclick="enviarForm('form')">Solicitar Horários</button>
                     </div>
                 </div>
             </div>
         </div>
+    </form>
     </div>
-</form>
+ 
+</body>
+</html>
+

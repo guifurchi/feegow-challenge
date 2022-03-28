@@ -27,6 +27,12 @@ class Route extends Bootstrap{
             'action' => 'solicitarAgenda'
         );
 
+        $routes['confirma'] = array (
+            'route' => '/confirma',
+            'controller' => 'AppController',
+            'action' => 'confirma'
+        );
+
         $this->setRoutes($routes);
 
     }

@@ -4,12 +4,12 @@
         <?php if($this->view->erro == 'erro') { ?>
             <h1>Solicitação Negada!</h1>
             <p>Por favor verifique se os campos foram preenchidos corretamente.</p>
-            <a href="#" onclick="window.history.back()">voltar para o agendamento</a>
+            <a class="btn btn-success" href="/agenda?profissional_id=<?php echo $_POST['profissional_id']?>">voltar para o agendamento</a>
         <?php }else{ ?>
             <h1>Solicitação realizada com sucesso</h1>
             <p>Retornaremos com a confirmação em breve!</p>
             <p>Obrigado por utilizar o nosso agendamento Feegow!</p>
-            <a href="/">Agendar nova consulta</a>
+            <a class="btn btn-success" href="/">Agendar nova consulta</a>
         <?php } ?>
         </div>
     </div>

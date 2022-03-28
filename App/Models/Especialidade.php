@@ -9,11 +9,7 @@ class Especialidade extends Model{
 
     public function getEspecialidade(){
 
-            $query = "select * from tb_especialidade";
-            $stmt = $this->db->prepare($query);
-            $stmt->execute();
-    
-            return $stmt->fetchall(\PDO::FETCH_ASSOC);
+            //não utilizada, esse método pode ser utilziado para consulta no banco de dados MySQL
     }
 }
 ?>
